@@ -1,4 +1,5 @@
 # Building the Baseline SPY trading strategy as a comparison for our trading strategy.
+
 import pandas as pd
 import yfinance as yf
 import plotly.graph_objects as go
