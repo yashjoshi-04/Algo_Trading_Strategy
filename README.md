@@ -1,4 +1,4 @@
-# Algo Trading Strategy leveraging ARIMAX
+# Algo Trading Strategy leveraging ARIMA-X
 
 <h2> Introduction:</h2>
 
