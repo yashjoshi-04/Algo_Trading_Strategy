@@ -4,9 +4,7 @@ import numpy as np
 import plotly.graph_objects as go
 import pandas as pd
 
-
 Predicted_Tuned.index = Y_test.index
-
 actual_cum_returns = np.exp(Y_test).cumprod()
 predicted_cum_returns = np.exp(Predicted_Tuned).cumprod()
 
@@ -39,7 +37,6 @@ print(Unwind_Signal.value_counts())
 
 
 Predicted_Tuned.index = Y_test.index
-
 actual_cum_returns = np.exp(Y_test).cumprod()
 predicted_cum_returns = np.exp(Predicted_Tuned).cumprod()
 
