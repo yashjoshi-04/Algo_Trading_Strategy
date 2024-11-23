@@ -61,8 +61,7 @@ def assess_models(p_values, d_values, q_values):
                     
                 except:
                     continue
-    print("Best ARIMA%s MSE = %.7f" % (best_cfg, best_score)
-          )
+    print("Best ARIMA%s MSE = %.7f" % (best_cfg, best_score))
 
 p_values = [0, 1, 2]
 d_values = range(0, 2)
