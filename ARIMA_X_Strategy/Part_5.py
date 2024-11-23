@@ -16,8 +16,6 @@ fig.add_trace(go.Scatter(x=predicted_cum_returns.index, y=predicted_cum_returns,
 fig.update_layout(title="Cumulative Returns: Actual vs Predicted", xaxis_title="Date", yaxis_title="Cumulative Returns", template='plotly_white', width=1200, height=800, legend=dict(x=0, y=1.0))
 fig.show()
 
-
-
 # Building the Buy and Unwind Signals, using a simple Mean-Reversion Strategy
 
 # Buy Signal
