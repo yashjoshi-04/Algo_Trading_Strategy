@@ -21,7 +21,7 @@ bond_data = yf.download(bond_ticker, start = start, end = end)
 
 
 
-# Trying to compute weekly returns
+# Compute weekly returns
 
 return_period = 5
 
