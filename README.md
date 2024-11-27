@@ -1,46 +1,78 @@
-# Algo Trading Strategy leveraging ARIMA-X
+# Algo Trading Strategy Leveraging ARIMA-X
 
-<h2> Introduction:</h2>
+---
 
-> I wanted to build an algo trading strategy to beat the SPY Returns and CAGR.
->
-> However, the challenge that I set my self was to only trade SPY - essentially finding a way to time my buy and sell signals to beat the market.
-> 
-> This absolutely did not work out flawlessly. I had built 6 different strategies that massively underperformed before I found the one that worked.
-> 
-> My goal here is not to glorify Quantitative Trading and pretend like every strategy built - works.
-> 
-> More often than not, they fail.
->
-> Here's a snapshot of some of my failed strategies. I try to use Mean Reversion using Gold Futures (Red line) and a simple MACD strategy (Blue line) and compare that against Cumulative Returns of the SPY for the timeframe listed on the axes.
+## 📖 **Introduction**
+
+I aimed to build an algorithmic trading strategy that could **outperform SPY returns and CAGR** by timing buy and sell signals exclusively for SPY. 
+
+This journey was not without failures. Before finding a successful strategy, I developed six different models that massively underperformed. My intent here is not to glorify quantitative trading but to provide a transparent view into the iterative process of creating a viable strategy.
+
+> **Note:** More often than not, trading strategies fail before finding one that works.
+
+Below is a snapshot comparing two failed strategies:
+- **Red Line**: Mean Reversion using Gold Futures
+- **Blue Line**: Simple MACD Strategy
+- **Orange Line**: SPY Cumulative Returns (baseline)
 
 <img width="827" alt="Screenshot 2024-11-20 at 1 12 14 PM" src="https://github.com/user-attachments/assets/45a3ab74-6f0d-48fc-9d4e-57243098a10e">
 
+---
 
-<h2>Rationale:</h2>
+## 🧐 **Rationale**
 
-> I wanted to leverage the inverse relationship between commodities and equities, hoping to build signals that primariy look at the Adjusted Closing prices of commodities and then, based on the market movement there, buy/sell SPY.
+The objective was to leverage the **inverse relationship between commodities and equities** to generate buy/sell signals for SPY using adjusted closing prices of key indicators. 
 
-> At first, I tried gold - did not work. This was because Gold is not nearly volatile enough to be able to build any strategy on it. The same goes with Gold Futures, Silver and most other commodities.
+### **Key Insights:**
+1. **Gold and Silver Futures**: Not volatile enough to provide meaningful signals for SPY.
+2. **Energy Futures (yfinance: `ES=F`)**: Exhibited both high volatility and a strong inverse correlation with SPY, making it a promising indicator.
+3. **VIX Index (yfinance: `^VIX`)**: Captures downward volatility more effectively than SPY, allowing prediction of market downturns before significant impact.
 
-> However, after a bit of research, I found out that the Energy Futures (yfinance ticker - 'ES=F') are pretty well inversely correlated and also extremely volatile.
+---
 
-> I also used the VIX Index (yfinance ticker - ^VIX) as it captures a lot of downwards volatility that SPY does not seem to capture - effectively predicitng market downturns before it significantly hampers SPY.
+## 🛠 **Methodology**
 
-<h2> Methodology: </h2>
+### **Model Overview:**
+- Developed an **ARIMAX model** with:
+  - `^VIX` and `ES=F` as independent features.
+  - Lagged values of `^VIX` to enhance trend capture.
 
-> I build an ARIMAX, Machine Learning model that uses ^VIX and ES=F as the independent features. I also use lagged values of ^VIX to help train my model.
+### **Process:**
+1. Train the ARIMAX model to capture the trend of SPY returns.
+2. Overlay the **ARIMAX Predicted Trend** onto SPY actual cumulative returns.
+3. Use the modeled relationship to generate **buy/sell signals**.
 
-> The ARIMAX captures the trend of the SPY, which i then overlay onto the SPY Actual Cumulative Returns and use that relationship to build Buy/Sell Signals.
+### **Visualization:**
+Below is a comparison between the **ARIMAX Predicted Mean (Trend)** and **SPY Cumulative Returns**:
+- **Red Line**: ARIMAX Predicted Trend
+- **Blue Dashed Line**: SPY Cumulative Returns
 
-<h3> ARIMAX Predicted Mean (Trend - red line) vs SPY Cumulative Returns (Blue - dashed line): </h3>
 <img width="1004" alt="Screenshot 2024-11-23 at 10 53 12 AM" src="https://github.com/user-attachments/assets/835a486e-7c0a-47a2-921b-c615f5c7e6ba">
 
-> After simulating the strategy with a starting base capital of $100,000, we get the following results:
-<h3> Performance Metrics: </h3>
+---
 
+## 📊 **Performance Metrics**
+
+After simulating the strategy with an initial capital of **$100,000**, the following results were observed:
+
+### **Key Metrics**:
 <img width="341" alt="Screenshot 2024-11-23 at 10 59 45 AM" src="https://github.com/user-attachments/assets/29bcfc97-3b93-405b-8dfc-17f3f63c214e">
 
-<h3> SPY Portfolio Value vs Strategy Portfolio Value: </h3>
+### **Portfolio Value Comparison:**
+Below is a comparison between the **SPY Portfolio Value** and the **Strategy Portfolio Value**:
 <img width="633" alt="Screenshot 2024-11-23 at 10 59 59 AM" src="https://github.com/user-attachments/assets/9770f602-304d-4a6a-a303-81605aa3bb32">
 
+---
+
+## 💡 **Conclusion**
+
+This project highlights:
+- The iterative nature of developing trading strategies.
+- The importance of combining multiple indicators (`ES=F`, `^VIX`) for robust predictions.
+- The use of **ARIMAX models** to generate actionable insights for SPY trading.
+
+While the strategy succeeded in outperforming SPY, its real-world application requires continuous adaptation to dynamic market conditions.
+
+For further inquiries or collaboration, feel free to reach out.
+
+---
