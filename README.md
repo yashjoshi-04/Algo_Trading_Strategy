@@ -13,7 +13,7 @@ This journey was not without failures. Before finding a successful strategy, I d
 Below is a snapshot comparing two failed strategies:
 - **Red Line**: Mean Reversion using Gold Futures
 - **Blue Line**: Simple MACD Strategy
-- **Orange Line**: SPY Cumulative Returns (baseline)
+- **Black Line**: SPY Cumulative Returns (baseline)
 
 <img width="827" alt="Screenshot 2024-11-20 at 1 12 14 PM" src="https://github.com/user-attachments/assets/45a3ab74-6f0d-48fc-9d4e-57243098a10e">
 
